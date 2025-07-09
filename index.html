@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lewsyn -  AI Legal Intelligence | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Enhanced animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes revolve {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+
+        @keyframes countdownGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-revolve {
+            animation: revolve 20s linear infinite;
+        }
+
+        .animate-orbit {
+            animation: orbit 8s linear infinite;
+        }
+
+        .animate-pulse-custom {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+            animation: shimmer 2s linear infinite;
+        }
+
+        .animate-countdown-glow {
+            animation: countdownGlow 3s ease-in-out infinite;
+        }
+
+        /* Earth-like revolving animation */
+        .earth-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .earth-sphere {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .earth-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                linear-gradient(0deg, transparent 48%, rgba(255, 255, 255, 0.1) 49%, rgba(255, 255, 255, 0.1) 51%, transparent 52%),
+                linear-gradient(30deg, transparent 48%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 51%, transparent 52%),
+                linear-gradient(60deg, transparent 48%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 51%, transparent 52%),
+                linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.1) 49%, rgba(255, 255, 255, 0.1) 51%, transparent 52%),
+                linear-gradient(120deg, transparent 48%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 51%, transparent 52%),
+                linear-gradient(150deg, transparent 48%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 51%, transparent 52%);
+        }
+
+        .earth-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            transform-origin: 0 0;
+        }
+
+        /* Premium effects */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .glass-effect-dark {
+            background: rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .premium-button {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .premium-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .premium-button-dark {
+            background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .premium-button-dark:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .premium-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .countdown-number {
+            font-variant-numeric: tabular-nums;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Delayed animations */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+
+        /* Premium hover effects */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .logo-container {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Refined spacing */
+        .section-spacing {
+            padding: 6rem 0;
+        }
+
+        .hero-spacing {
+            padding: 8rem 0;
+        }
+    </style>
+</head>
+<body class="bg-white text-black overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-white/85 backdrop-blur-20 z-50 border-b border-gray-200/30">
+        <div class="container mx-auto flex justify-between items-center px-8 py-5">
+            <div class="flex items-center logo-container">
+                <div class="w-8 h-8 bg-black rounded-xl flex items-center justify-center mr-3">
+                    <span class="text-white font-semibold text-sm">L</span>
+                </div>
+                <span class="text-xl font-poppins font-semibold tracking-tight">Lesyn</span>
+            </div>
+            <div class="hidden md:flex space-x-10">
+                <a href="#home" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">Home</a>
+                <a href="#features" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">Features</a>
+                <a href="#notify" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">Notify Me</a>
+            </div>
+            <button class="md:hidden text-black focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-20 border-t border-gray-200/30">
+            <div class="px-8 py-6 space-y-3">
+                <a href="#home" class="block text-gray-600 hover:text-black transition-colors text-sm font-medium">Home</a>
+                <a href="#features" class="block text-gray-600 hover:text-black transition-colors text-sm font-medium">Features</a>
+                <a href="#notify" class="block text-gray-600 hover:text-black transition-colors text-sm font-medium">Notify Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-20">
+        <div class="container mx-auto text-center px-8">
+            
+            <!-- Earth-like Animation -->
+            <div class="animate-fadeInUp opacity-0 mb-16">
+                <div class="earth-container">
+                    <div class="earth-sphere animate-revolve">
+                        <div class="earth-lines"></div>
+                    </div>
+                    <div class="earth-orbit animate-orbit"></div>
+                </div>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-poppins font-light mb-4 animate-fadeInUp opacity-0 delay-200 tracking-tight">
+                <span class="premium-text">Lesyn</span>
+            </h1>
+            
+            <div class="animate-fadeInUp opacity-0 delay-400 mb-12">
+                <p class="text-xl md:text-2xl font-light mb-4 text-gray-700 font-poppins">Coming Soon</p>
+                <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mx-auto"></div>
+            </div>
+            
+            <p class="text-base md:text-lg mb-16 max-w-2xl mx-auto font-light leading-relaxed text-gray-600 animate-fadeInUp opacity-0 delay-600">
+                Advanced AI-powered legal intelligence platform designed specifically for the Indian legal system. 
+                Streamline your practice with precision-crafted tools.
+            </p>
+            
+            <!-- Premium Countdown Timer -->
+            <div class="countdown-box p-8 rounded-2xl mx-auto max-w-md mb-16 animate-scaleIn opacity-0 delay-700 animate-countdown-glow">
+                <h3 class="text-lg font-medium mb-8 text-gray-700 font-poppins">Launch Countdown</h3>
+                <div id="countdown" class="grid grid-cols-4 gap-6 text-center">
+                    <div class="countdown-item">
+                        <div id="days" class="countdown-number text-2xl md:text-3xl font-light text-black">00</div>
+                        <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mt-2">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="hours" class="countdown-number text-2xl md:text-3xl font-light text-black">00</div>
+                        <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mt-2">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="minutes" class="countdown-number text-2xl md:text-3xl font-light text-black">00</div>
+                        <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mt-2">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="seconds" class="countdown-number text-2xl md:text-3xl font-light text-black">00</div>
+                        <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mt-2">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="animate-fadeInUp opacity-0 delay-800">
+                <a href="#notify" class="premium-button text-black px-10 py-4 rounded-full text-base font-medium inline-block">
+                    Join the Waitlist
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-spacing bg-black text-white">
+        <div class="container mx-auto px-8">
+            <h2 class="text-4xl md:text-6xl font-poppins font-light text-center mb-16 animate-fadeInUp opacity-0 tracking-tight">
+                Key Features
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card p-8 rounded-2xl cursor-pointer animate-fadeInUp opacity-0 delay-100" onclick="openPopup('document-automation')">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium mb-4 text-center font-poppins">Document Automation</h3>
+                    <p class="text-gray-300 text-center text-sm font-light leading-relaxed">AI-powered template drafting reduces billable hours by 40-60%. Precision-crafted for Indian legal requirements.</p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-2xl cursor-pointer animate-fadeInUp opacity-0 delay-200" onclick="openPopup('casevault')">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium mb-4 text-center font-poppins">CaseVault</h3>
+                    <p class="text-gray-300 text-center text-sm font-light leading-relaxed">Centralized case management system with secure file storage, version control, and instant access to case history.</p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-2xl cursor-pointer animate-fadeInUp opacity-0 delay-300" onclick="openPopup('mental-health')">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium mb-4 text-center font-poppins">Wellness Integration</h3>
+                    <p class="text-gray-300 text-center text-sm font-light leading-relaxed">Built-in wellness tools to manage stress, track work-life balance, and maintain peak performance levels.</p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-2xl cursor-pointer animate-fadeInUp opacity-0 delay-400" onclick="openPopup('multilingual')">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.5 0a9 9 0 019 9h-1a8 8 0 00-8-8V3m-9 9h12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium mb-4 text-center font-poppins">Multilingual Support</h3>
+                    <p class="text-gray-300 text-center text-sm font-light leading-relaxed">Seamless Hindi-English documentation and translation for effective client communication across India.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notify Me Section -->
+    <section id="notify" class="section-spacing bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-8">
+            <h2 class="text-4xl md:text-6xl font-poppins font-light text-center mb-6 animate-fadeInUp opacity-0 tracking-tight">
+                Join the Waitlist
+            </h2>
+            <div class="w-20 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mx-auto mb-12"></div>
+            <p class="text-base text-center mb-16 max-w-xl mx-auto font-light text-gray-600 animate-fadeInUp opacity-0 delay-200">
+                Be among the first to experience next-generation legal intelligence. 
+                Early access with exclusive features and priority support.
+            </p>
+            <form class="max-w-sm mx-auto glass-effect-dark p-10 rounded-2xl animate-scaleIn opacity-0 delay-400">
+                <div class="mb-6">
+                    <label for="name" class="block text-gray-700 mb-3 text-xs font-medium uppercase tracking-wider">Full Name</label>
+                    <input type="text" id="name" class="w-full p-4 rounded-xl bg-white/60 text-black border border-gray-200/50 focus:outline-none focus:border-gray-400 transition-all text-sm" placeholder="Enter your name">
+                </div>
+                <div class="mb-8">
+                    <label for="email" class="block text-gray-700 mb-3 text-xs font-medium uppercase tracking-wider">Email Address</label>
+                    <input type="email" id="email" class="w-full p-4 rounded-xl bg-white/60 text-black border border-gray-200/50 focus:outline-none focus:border-gray-400 transition-all text-sm" placeholder="Enter your email">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="premium-button text-black px-8 py-4 rounded-full text-sm font-medium w-full">
+                        Get Early Access
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-8 text-center">
+            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span class="text-black font-semibold text-sm">L</span>
+            </div>
+            <p class="text-gray-400 mb-6 text-sm font-light">© 2025 Lawsyn. All rights reserved.</p>
+            <div class="flex justify-center space-x-8">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm font-light">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm font-light">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm font-light">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Premium Popup -->
+    <div id="popup" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center z-50">
+        <div id="popup-content" class="bg-white p-10 rounded-2xl max-w-md w-full mx-6 animate-scaleIn shadow-xl">
+            <h2 id="popup-title" class="text-2xl font-poppins font-medium mb-6 text-black"></h2>
+            <p id="popup-description" class="text-gray-600 mb-8 text-sm font-light leading-relaxed"></p>
+            <button onclick="closePopup()" class="premium-button text-black px-6 py-3 rounded-full text-sm font-medium">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fadeInUp, .animate-scaleIn').forEach(el => {
+            observer.observe(el);
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openPopup(feature) {
+            const popup = document.getElementById('popup');
+            const title = document.getElementById('popup-title');
+            const description = document.getElementById('popup-description');
+
+            const features = {
+                'document-automation': {
+                    title: 'Document Automation',
+                    description: 'Advanced AI algorithms analyze legal patterns and generate precise document templates. Reduces manual drafting time by 40-60% while maintaining accuracy standards required for Indian legal practice.'
+                },
+                'casevault': {
+                    title: 'CaseVault',
+                    description: 'Comprehensive case management platform with secure cloud storage, automated version control, and intelligent search capabilities. Access case history, documents, and client information instantly from any device.'
+                },
+                'mental-health': {
+                    title: 'Wellness Integration',
+                    description: 'Integrated wellness dashboard tracks work patterns, suggests break intervals, and provides stress management tools. Designed specifically for legal professionals to maintain peak performance and work-life balance.'
+                },
+                'multilingual': {
+                    title: 'Multilingual Support',
+                    description: 'Native Hindi-English processing with intelligent translation features. Seamlessly create documents in both languages, ensuring clear communication with clients across India\'s diverse linguistic landscape.'
+                }
+            };
+
+            title.textContent = features[feature].title;
+            description.textContent = features[feature].description;
+            popup.classList.remove('hidden');
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.add('hidden');
+        }
+
+        // Enhanced Countdown Timer
+        function startCountdown() {
+            const launchDate = new Date('2025-12-31T23:59:59');
+            const elements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeLeft = launchDate - now;
+
+                if (timeLeft <= 0) {
+                    Object.values(elements).forEach(el => el.textContent = '00');
+                    return;
+                }
+
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                elements.days.textContent = days.toString().padStart(2, '0');
+                elements.hours.textContent = hours.toString().padStart(2, '0');
+                elements.minutes.textContent = minutes.toString().padStart(2, '0');
+                elements.seconds.textContent = seconds.toString().padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Enhanced smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
